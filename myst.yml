@@ -1,0 +1,11 @@
+# Generated with `myst init` v1.7.0
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: 21ed0768-512e-4288-b67d-b1810d7deefd
+  title: Notes from Cloud App Architect
+  description: A small project were I'll write some of the things I learned.
+  authors: 
+   - Matteo Ragni
+site:
+  template: book-theme
