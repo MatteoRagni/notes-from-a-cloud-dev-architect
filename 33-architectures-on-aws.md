@@ -45,5 +45,3 @@ When building microservices on AWS without using OpenShift or Kubernetes, you ca
 - Use CI/CD with AWS CodePipeline, GitHub Actions or Jenkins; adopt GitOps where possible.
 - Implement resilience patterns (retries, exponential backoff, idempotency) and use Step Functions to handle orchestrated workflows.
 - Monitor and trace with CloudWatch and X‑Ray; set alarms on errors and latencies.
-
----

@@ -1,4 +1,4 @@
-# Azure Services and Azure Red Hat OpenShift (ARO)
+# Azure Services
 
 Microsoft Azure offers services comparable to AWS, with tight integration into enterprise ecosystems (Active Directory, Microsoft 365). Here we summarize key services relevant to microservices and ARO.
 
@@ -37,6 +37,4 @@ ARO provides fully managed OpenShift clusters on Azure. Red Hat and Microsoft ha
 - **Azure Monitor**: Logs and metrics collection. 
 - **Azure Key Vault**: Secrets management. 
 
-ARO benefits include integrated development tools, security compliance, joint support and 99.95 SLA.
-
----
+ARO benefits include integrated development tools, security compliance, joint support and 99.95 % SLA.

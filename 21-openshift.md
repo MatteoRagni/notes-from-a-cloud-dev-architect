@@ -32,11 +32,11 @@ ODF provides software‑defined storage for OpenShift. It offers multi‑model p
 
 ### Red Hat OpenShift Service on AWS (ROSA)
 
-ROSA delivers OpenShift as a fully managed service on AWS. It simplifies cluster creation via CLI, AWS Management Console or Red Hat portal. Benefits include accelerated time to value (reducing development time by 60–70), enabling teams to focus on innovation rather than infrastructure (50 reduction in infra management), hybrid cloud flexibility and increased operational efficiency. ROSA features a fully managed control plane, integration with AWS services (IAM, CloudWatch, S3, etc.) and pay‑as‑you‑go billing.
+ROSA delivers OpenShift as a fully managed service on AWS. It simplifies cluster creation via CLI, AWS Management Console or Red Hat portal. Benefits include accelerated time to value (reducing development time by 60–70 %), enabling teams to focus on innovation rather than infrastructure (50 % reduction in infra management), hybrid cloud flexibility and increased operational efficiency. ROSA features a fully managed control plane, integration with AWS services (IAM, CloudWatch, S3, etc.) and pay‑as‑you‑go billing.
 
 ### Azure Red Hat OpenShift (ARO)
 
-ARO is a fully managed OpenShift service jointly engineered by Microsoft and Red Hat. The control plane and worker nodes are patched, updated and monitored by Red Hat and Microsoft. Benefits include integrated development tools (Azure DevOps, Visual Studio Code), enhanced security and compliance with Azure governance, joint support and engineering, 99.95 SLA and cost optimization via Azure Consumption Commitment.
+ARO is a fully managed OpenShift service jointly engineered by Microsoft and Red Hat. The control plane and worker nodes are patched, updated and monitored by Red Hat and Microsoft. Benefits include integrated development tools (Azure DevOps, Visual Studio Code), enhanced security and compliance with Azure governance, joint support and engineering, 99.95 % SLA and cost optimization via Azure Consumption Commitment.
 
 ### Other Services
 
@@ -44,5 +44,3 @@ ARO is a fully managed OpenShift service jointly engineered by Microsoft and Red
 - **Red Hat Advanced Cluster Management (ACM)**: Centralizes multicluster management, policy enforcement and observability across Kubernetes clusters.
 - **Red Hat Advanced Cluster Security (ACS)**: Provides container security, vulnerability scanning and runtime risk mitigation.
 - **Developer Experience**: OpenShift includes developer consoles, build pipelines (S2I), integration with IDEs, and dev‑spaces (via Eclipse Che).
-
----

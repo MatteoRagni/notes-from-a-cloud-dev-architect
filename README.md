@@ -1,8 +1,12 @@
+![logo](images/logo.png)
+
 # Notes from a Cloud-Native AppDev Architect
 
 This repository contains a book-style guide, written in MyST Markdown and built with Sphinx with a particular focus on the Red Hat Cloud‑Native AppDev Architect role.
 
-> This guide is being written with the help of an AI assistant, so you may occasionally spot small quirks or rough edges.
+```{warning}
+This guide is being written with the help of an AI assistant, so you may occasionally spot small quirks or rough edges.
+```
 
 ## Writing with MyST
 

@@ -40,4 +40,3 @@ Building microservices on OpenShift leverages its Kubernetes base plus additiona
 - Use horizontal autoscaling based on CPU/memory or custom metrics.
 - Implement CI/CD with pipelines; use GitOps for traceability.
 
----

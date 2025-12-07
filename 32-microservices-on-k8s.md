@@ -34,5 +34,3 @@ When building microservices on vanilla Kubernetes (e.g., GKE, EKS, AKS), many Op
 
 - Manage cluster upgrades and patching; on managed services (EKS/AKS/GKE) the control plane is handled by the provider.
 - Use multi‑cluster tools (e.g., Rancher, ACM) for large fleets.
-
----

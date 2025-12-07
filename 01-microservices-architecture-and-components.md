@@ -12,6 +12,7 @@ enabling faster application development and deployment. This decomposition enabl
 Awesome lists are always a _fantastic_ way for discovering new things. For Microservices, check [this](https://github.com/mfornos/awesome-microservices) out.
 :::
 
+
 ## Key Design Principles
 
 An effective microservice should:
@@ -251,10 +252,6 @@ Instead of storing only the current state (e.g. a row in a table), you store **a
  * Harder for teams unfamiliar with the pattern to reason about.
 
 #### CQRS (Command Query Responsibility Segregation)
-
-:::{warn}
-I never had the possibility to see it in action, I'm writing purely theoretical concepts.
-:::
 
 **Idea.**
 

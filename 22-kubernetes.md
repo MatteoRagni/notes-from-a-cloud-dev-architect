@@ -58,4 +58,3 @@ A Kubernetes cluster comprises a **control plane** and multiple **worker nodes**
 - Use tracing (Jaeger, OpenTelemetry) to trace request flows.
 - Use alerting (Prometheus Alertmanager) to notify on anomalies.
 
----

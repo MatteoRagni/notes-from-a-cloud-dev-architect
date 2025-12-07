@@ -29,5 +29,3 @@
 - Foster cross‑functional teams owning services end to end (development, deployment, operation).
 - Encourage documentation and knowledge sharing; maintain architecture diagrams, runbooks and READMEs.
 - Leverage retrospectives to improve processes and design; adopt an Agile mindset.
-
----

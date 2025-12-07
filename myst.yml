@@ -7,5 +7,12 @@ project:
   description: A small project were I'll write some of the things I learned.
   authors: 
    - Matteo Ragni
+  license: CC-BY-NC-4.0
 site:
   template: book-theme
+  options:
+    logo: images/logo.png
+    folders: true
+  parts:
+    footer: |
+      &copy; 2025 by Matteo Ragni is licensed under CC BY-NC 4.0
