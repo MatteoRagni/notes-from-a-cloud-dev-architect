@@ -1,4 +1,4 @@
-# Fundamentals of Kubernetes
+# 🚧​ Kubernetes
 
 Kubernetes (K8s) is an open‑source platform for automating deployment, scaling, and management of containerized workloads. It provides building blocks for orchestrating containers across clusters of machines.
 

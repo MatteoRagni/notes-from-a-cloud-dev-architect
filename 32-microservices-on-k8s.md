@@ -1,4 +1,4 @@
-# Developing Microservices on Kubernetes
+# 🚧​ Developing Microservices on Kubernetes
 
 When building microservices on vanilla Kubernetes (e.g., GKE, EKS, AKS), many OpenShift features (S2I, GitOps, pipelines) are not built‑in but can be achieved via open‑source projects and tools.
 

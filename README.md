@@ -36,6 +36,10 @@ myst start
 
 ## Contributing and License
 
+```{info}
+Chapter marked with 🚧​ are work in progress
+```
+
 This project is primarily a personal learning and preparation resource, but feel free to fork it or adapt the structure for your own study notes. If you spot mistakes or have ideas for improving explanations, open an issue or submit a pull request.
 
 

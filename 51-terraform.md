@@ -1,4 +1,4 @@
-# Fundamentals of Terraform
+# 🚧​ Terraform
 
 Terraform by HashiCorp is an Infrastructure‑as‑Code (IaC) tool enabling the provisioning and management of cloud and on‑premises infrastructure resources via declarative configuration files. It uses providers to interact with APIs of cloud services.
 
