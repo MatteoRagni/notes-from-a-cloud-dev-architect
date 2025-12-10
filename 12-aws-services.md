@@ -2,7 +2,7 @@
 
 AWS provides a rich set of managed services for compute, storage, databases, messaging and more. Understanding these services is crucial for designing cloud‑native microservices.
 
-Below you’ll find a set of short architect‑focused notes for key AWS services. Each section explains what the service does, links to the official homepage, and outlines a typical usage scenario or reference pattern.
+Below you’ll find a set of short list of key services. Each section explains what the service does, links to the official homepage, and outlines a typical usage scenario or reference pattern.
 
 ## Foundation Services
 
@@ -24,7 +24,7 @@ A common pattern is a microservices platform where each service is deployed as a
 
 ### Amazon ECS (Elastic Container Service)
 
-[Amazon ECS](https://aws.amazon.com/ecs/) is AWS’s native container orchestration service. Unlike EKS, ECS is deeply integrated with AWS primitives and abstracts away Kubernetes concepts. Architects typically pick ECS when they want **managed container scheduling** with minimal operational overhead and are comfortable with AWS‑specific abstractions. ECS can run tasks on EC2 instances you manage or on AWS Fargate for serverless containers. It integrates tightly with IAM, CloudWatch, ALB/NLB, and service discovery. Task definitions capture container configuration, resource needs, and IAM roles; services manage desired count and rolling deployments.
+[Amazon ECS](https://aws.amazon.com/ecs/) is AWS’s native container orchestration service. Unlike EKS, ECS is deeply integrated with AWS primitives and abstracts away Kubernetes concepts. Developers typically pick ECS when they want **managed container scheduling** with minimal operational overhead and are comfortable with AWS‑specific abstractions. ECS can run tasks on EC2 instances you manage or on AWS Fargate for serverless containers. It integrates tightly with IAM, CloudWatch, ALB/NLB, and service discovery. Task definitions capture container configuration, resource needs, and IAM roles; services manage desired count and rolling deployments.
 
 **Typical scenario / pattern**
 A typical pattern is running multiple microservices or batch workers as ECS services on Fargate, each fronted by an Application Load Balancer listener or event triggers. This is frequently used for greenfield microservices platforms where the team doesn’t need full Kubernetes flexibility but wants strong AWS integration, easy autoscaling, and reduced control plane complexity.
@@ -45,7 +45,7 @@ A common pattern is using S3 as the landing zone for raw data ingestion (e.g. lo
 
 ### Amazon EBS (Elastic Block Store)
 
-[Amazon EBS](https://aws.amazon.com/ebs/) provides network‑attached block storage volumes for EC2 instances. Volumes behave like virtual disks that you format with a filesystem and mount into instances. Architects use EBS where they need low‑latency, persistent storage tightly coupled to a single instance, such as databases, application servers with local state, or legacy workloads. EBS offers different volume types (gp3, io1/io2, st1, sc1) that trade off performance, IOPS, and cost. Features include snapshots, encryption at rest, and the ability to detach/reattach volumes across instances in the same AZ.
+[Amazon EBS](https://aws.amazon.com/ebs/) provides network‑attached block storage volumes for EC2 instances. Volumes behave like virtual disks that you format with a filesystem and mount into instances. Developers use EBS where they need low‑latency, persistent storage tightly coupled to a single instance, such as databases, application servers with local state, or legacy workloads. EBS offers different volume types (gp3, io1/io2, st1, sc1) that trade off performance, IOPS, and cost. Features include snapshots, encryption at rest, and the ability to detach/reattach volumes across instances in the same AZ.
 
 **Typical scenario / pattern**
 A typical pattern is running a self‑managed relational database (e.g. PostgreSQL or MySQL) on EC2 with multiple EBS volumes (data, logs, backups), combined with regular EBS snapshots to S3 for backups. Another use case is high‑performance storage for analytics or build servers that need predictable IOPS but do not require shared access across multiple instances.
@@ -59,21 +59,21 @@ Common patterns include shared configuration or content across web servers (e.g.
 
 ### Amazon VPC (Virtual Private Cloud)
 
-[Amazon VPC](https://aws.amazon.com/vpc/) is the foundational networking construct in AWS. It defines a logically isolated virtual network with CIDR ranges, subnets, route tables, internet/NAT gateways, and network ACLs. Architects use VPCs to segment environments (prod, staging), isolate workloads, and control connectivity to on‑premises networks via VPN or Direct Connect. Within a VPC, security groups provide stateful firewall rules at the instance or ENI level. Multi‑AZ subnet design is crucial for _high availability_, and VPC peering or Transit Gateway enable multi‑VPC and multi‑account topologies.
+[Amazon VPC](https://aws.amazon.com/vpc/) is the foundational networking construct in AWS. It defines a logically isolated virtual network with CIDR ranges, subnets, route tables, internet/NAT gateways, and network ACLs. Developers use VPCs to segment environments (prod, staging), isolate workloads, and control connectivity to on‑premises networks via VPN or Direct Connect. Within a VPC, security groups provide stateful firewall rules at the instance or ENI level. Multi‑AZ subnet design is crucial for _high availability_, and VPC peering or Transit Gateway enable multi‑VPC and multi‑account topologies.
 
 **Typical scenario / pattern**
 A reference pattern is a VPC with public subnets hosting load balancers and bastion hosts, and private subnets for application servers and databases. Connectivity to on‑premises is established via a Site‑to‑Site VPN or Direct Connect.
 
 ### AWS Elastic Load Balancing (ELB)
 
-[AWS Elastic Load Balancing](https://aws.amazon.com/elasticloadbalancing/) distributes incoming traffic across multiple targets (EC2 instances, IPs, containers, Lambda functions). There are several flavours: Application Load Balancer (ALB) for HTTP/HTTPS and advanced routing, Network Load Balancer (NLB) for ultra‑low latency and TCP/UDP, and Gateway Load Balancer for virtual appliances. Architects use ELB to implement **high availability, scalability, and zero‑downtime deployments**. Load balancers integrate tightly with Auto Scaling Groups, target groups, and health checks, and can terminate TLS, offloading certificate management.
+[AWS Elastic Load Balancing](https://aws.amazon.com/elasticloadbalancing/) distributes incoming traffic across multiple targets (EC2 instances, IPs, containers, Lambda functions). There are several flavours: Application Load Balancer (ALB) for HTTP/HTTPS and advanced routing, Network Load Balancer (NLB) for ultra‑low latency and TCP/UDP, and Gateway Load Balancer for virtual appliances. Developers use ELB to implement **high availability, scalability, and zero‑downtime deployments**. Load balancers integrate tightly with Auto Scaling Groups, target groups, and health checks, and can terminate TLS, offloading certificate management.
 
 **Typical scenario / pattern**
 A typical web stack uses an ALB in front of stateless application servers running on EC2, ECS, or EKS. The ALB terminates TLS, routes based on host/path, and performs health checks. For financial or latency‑sensitive workloads, an NLB fronting gRPC or custom TCP services is common. Blue‑green or canary deployments are often implemented by switching target groups or using weighted routing.
 
 ### Amazon Route 53
 
-[Amazon Route 53](https://aws.amazon.com/route53/) is a highly available and scalable DNS and traffic management service. It supports public and private hosted zones, health checks, and advanced routing policies (weighted, latency‑based, failover, geolocation). Architects rely on Route 53 to map domain names to AWS resources (ALBs, CloudFront, S3 websites, API Gateway) and to orchestrate global routing strategies across regions. It integrates with other AWS services, ACM for certificates, and can participate in disaster recovery  strategies by shifting traffic during outages.
+[Amazon Route 53](https://aws.amazon.com/route53/) is a highly available and scalable DNS and traffic management service. It supports public and private hosted zones, health checks, and advanced routing policies (weighted, latency‑based, failover, geolocation). Developers rely on Route 53 to map domain names to AWS resources (ALBs, CloudFront, S3 websites, API Gateway) and to orchestrate global routing strategies across regions. It integrates with other AWS services, ACM for certificates, and can participate in disaster recovery  strategies by shifting traffic during outages.
 
 **Typical scenario / pattern**
 A common pattern is using Route 53 to route `example.com` to a CloudFront distribution (Content Delivery) fronting an ALB in multiple regions. Health checks monitor endpoints, and a failover routing policy automatically moves traffic from a primary region to a standby region. In hybrid environments, private hosted zones allow DNS resolution for internal services within a VPC, avoiding hard‑coded IPs.
@@ -94,7 +94,7 @@ A common pattern is instrumenting services to emit custom business metrics (e.g.
 
 ### Amazon CloudTrail
 
-[Amazon CloudTrail](https://aws.amazon.com/cloudtrail/) records API calls and management events across your AWS accounts. It logs who did what, when, from where, and with which parameters. Architects rely on CloudTrail for **auditing, security investigations, and compliance** (e.g. PCI, ISO). Trails deliver events to S3 and optionally to CloudWatch Logs.
+[Amazon CloudTrail](https://aws.amazon.com/cloudtrail/) records API calls and management events across your AWS accounts. It logs who did what, when, from where, and with which parameters. Developers rely on CloudTrail for **auditing, security investigations, and compliance** (e.g. PCI, ISO). Trails deliver events to S3 and optionally to CloudWatch Logs.
 
 **Typical scenario / pattern**
 A typical pattern is a centralized logging account where all accounts in an AWS Organization send their CloudTrail logs. Security and compliance teams SIEM tooling to query these logs for suspicious activity, such as unusual console sign‑ins or IAM changes. Automated rules can react to specific CloudTrail events, such as disabling credentials when an access key is exposed.
@@ -103,42 +103,42 @@ A typical pattern is a centralized logging account where all accounts in an AWS 
 
 ### Amazon RDS (Relational Database Service)
 
-[Amazon RDS](https://aws.amazon.com/rds/) is a managed relational database service supporting engines like PostgreSQL, MySQL, MariaDB, SQL Server, and Oracle. It abstracts away much of the heavy lifting of running databases: provisioning, patching, backups, and basic monitoring. Architects use RDS when they want SQL but don’t want to operate databases at the OS and storage level. Features include Multi‑AZ deployments, read replicas, automated backups, and integration with IAM for security.
+[Amazon RDS](https://aws.amazon.com/rds/) is a managed relational database service supporting engines like PostgreSQL, MySQL, MariaDB, SQL Server, and Oracle. It abstracts away much of the heavy lifting of running databases: provisioning, patching, backups, and basic monitoring. Developers use RDS when they want SQL but don’t want to operate databases at the OS and storage level. Features include Multi‑AZ deployments, read replicas, automated backups, and integration with IAM for security.
 
 **Typical scenario / pattern**
 A standard pattern is a stateless application stack (on EC2/ECS/EKS) talking to an RDS PostgreSQL database in private subnets. Multi‑AZ deployment provides high availability; read replicas support read scaling and reporting. Maintenance windows allow controlled patching, and automated snapshots underpin point‑in‑time recovery strategies. Compared to self‑managed databases on EC2, RDS reduces operational burden and simplifies compliance.
 
 ### Amazon DynamoDB
 
-[Amazon DynamoDB](https://aws.amazon.com/dynamodb/) is a fully managed NoSQL key‑value and document database designed for millisecond latency at scale. It offers automatic partitioning, on‑demand or provisioned capacity, and features like global tables and streams. Architects choose DynamoDB when they need **predictable performance, massive scale, and flexible schemas**, especially for access patterns that can be modeled as key‑based lookups and range queries. It supports fine‑grained IAM permissions and integrates with Lambda, Kinesis, and other services for event‑driven designs.
+[Amazon DynamoDB](https://aws.amazon.com/dynamodb/) is a fully managed NoSQL key‑value and document database designed for millisecond latency at scale. It offers automatic partitioning, on‑demand or provisioned capacity, and features like global tables and streams. Developers choose DynamoDB when they need **predictable performance, massive scale, and flexible schemas**, especially for access patterns that can be modeled as key‑based lookups and range queries. It supports fine‑grained IAM permissions and integrates with Lambda, Kinesis, and other services for event‑driven designs.
 
 **Typical scenario / pattern**
 Typical use cases include user profiles, session stores, shopping carts, and IoT device state. A reference pattern is a serverless backend where API Gateway and Lambda functions read/write to DynamoDB, using DynamoDB Streams to trigger additional processing or projections (read models). 
 
 ### Amazon ElastiCache
 
-[Amazon ElastiCache](https://aws.amazon.com/elasticache/) is a managed in‑memory data store supporting Redis and Memcached. It provides sub‑millisecond latency for frequently accessed data, making it ideal as a cache layer in front of databases or APIs. Architects leverage ElastiCache to reduce database load, reduce latency, and implement patterns like **cache‑aside**, **write‑through**, and **session storage**. It supports replication, clustering for horizontal scale, automatic failover, and integration with VPC networking and IAM (via auth at the application layer).
+[Amazon ElastiCache](https://aws.amazon.com/elasticache/) is a managed in‑memory data store supporting Redis and Memcached. It provides sub‑millisecond latency for frequently accessed data, making it ideal as a cache layer in front of databases or APIs. Developers leverage ElastiCache to reduce database load, reduce latency, and implement patterns like **cache‑aside**, **write‑through**, and **session storage**. It supports replication, clustering for horizontal scale, automatic failover, and integration with VPC networking and IAM (via auth at the application layer).
 
 **Typical scenario / pattern**
 A common pattern is a high‑traffic web application where reads are offloaded from RDS or DynamoDB by caching hot keys in ElastiCache for Redis. Application code follows a cache‑aside pattern: check the cache first, fall back to the database on miss, then populate the cache. Another use case is centralized session storage for horizontally scaled web servers, ensuring consistent user sessions across multiple instances.
 
 ### Amazon SQS (Simple Queue Service)
 
-[Amazon SQS](https://aws.amazon.com/sqs/) is a fully managed message queuing service that enables asynchronous, decoupled communication between components. It supports standard queues (at‑least‑once delivery, best‑effort ordering) and FIFO queues (exactly‑once processing, ordered delivery). Architects use SQS to buffer work between producers and consumers, absorb bursts, and increase resilience when downstream systems are slow or temporarily unavailable. Visibility timeouts, dead‑letter queues, and long polling are key tuning knobs.
+[Amazon SQS](https://aws.amazon.com/sqs/) is a fully managed message queuing service that enables asynchronous, decoupled communication between components. It supports standard queues (at‑least‑once delivery, best‑effort ordering) and FIFO queues (exactly‑once processing, ordered delivery). Developers use SQS to buffer work between producers and consumers, absorb bursts, and increase resilience when downstream systems are slow or temporarily unavailable. Visibility timeouts, dead‑letter queues, and long polling are key tuning knobs.
 
 **Typical scenario / pattern**
 A common pattern is a producer (e.g. web API) pushing jobs to an SQS queue, while a fleet of workers (EC2, ECS, or Lambda) consumes messages at its own pace. This decouples request handling from background processing—for instance, sending emails, resizing images, or applying business rules—improving user‑perceived latency and system robustness. Dead‑letter queues collect poisoned messages for later inspection.
 
 ### Amazon MSK (Managed Streaming for Apache Kafka)
 
-[Amazon MSK](https://aws.amazon.com/msk/) is a fully managed service for running Apache Kafka on AWS. It handles cluster provisioning, patching, and monitoring while giving you a native Kafka interface. Architects adopt MSK when they want **event streaming** with Kafka’s ecosystem (producers, consumers, Kafka Connect, Kafka Streams) but don’t want to operate ZooKeeper/broker infrastructure. MSK integrates with VPC networking, IAM (via MSK IAM auth), and storage options like EBS. You still design topics, partitions, and retention policies as in self‑managed Kafka.
+[Amazon MSK](https://aws.amazon.com/msk/) is a fully managed service for running Apache Kafka on AWS. It handles cluster provisioning, patching, and monitoring while giving you a native Kafka interface. Developers adopt MSK when they want **event streaming** with Kafka’s ecosystem (producers, consumers, Kafka Connect, Kafka Streams) but don’t want to operate ZooKeeper/broker infrastructure. MSK integrates with VPC networking, IAM (via MSK IAM auth), and storage options like EBS. You still design topics, partitions, and retention policies as in self‑managed Kafka.
 
 **Typical scenario / pattern**
 A reference pattern is a centralized event bus where microservices publish domain events (e.g. `OrderPlaced`, `PaymentCaptured`) to Kafka topics on MSK. Downstream services subscribe to those events for projections, analytics, or integration with external systems. This enables event‑driven architectures, audit logs, and near real‑time analytics pipelines when combined with consumers running on ECS/EKS or serverless functions.
 
 ### Amazon Redshift
 
-[Amazon Redshift](https://aws.amazon.com/redshift/) is a fully managed, petabyte‑scale data warehouse optimized for analytical queries. It uses columnar storage and massively parallel processing (MPP) to run complex SQL queries quickly over large datasets. Architects use Redshift as the central analytics engine in a **modern data warehouse** or lakehouse architecture.
+[Amazon Redshift](https://aws.amazon.com/redshift/) is a fully managed, petabyte‑scale data warehouse optimized for analytical queries. It uses columnar storage and massively parallel processing (MPP) to run complex SQL queries quickly over large datasets. Developers use Redshift as the central analytics engine in a **modern data warehouse** or lakehouse architecture.
 
 **Typical scenario / pattern**
 A common pattern is ingesting raw data into S3, transforming it via Glue (AWS Extract Transform Load service) or other ETL tools, and loading it into Redshift tables. BI tools connect to Redshift for dashboards and ad‑hoc analysis. This architecture centralizes enterprise reporting and analytics with strong performance and governance.
@@ -152,14 +152,14 @@ A typical pattern is a data science team using SageMaker Studio for experimentat
 
 ### AWS Lambda
 
-[AWS Lambda](https://aws.amazon.com/lambda/) is a serverless compute service that runs code in response to events without provisioning or managing servers. You package functions (code + dependencies), configure triggers (API Gateway, S3, EventBridge, DynamoDB Streams, etc.), and Lambda handles scaling, concurrency, and availability. Architects use Lambda to build **event‑driven and micro‑batch workloads**, glue code between services, and low‑traffic APIs with cost‑efficient, pay‑per‑use pricing. It enforces short‑lived execution and statelessness by design.
+[AWS Lambda](https://aws.amazon.com/lambda/) is a serverless compute service that runs code in response to events without provisioning or managing servers. You package functions (code + dependencies), configure triggers (API Gateway, S3, EventBridge, DynamoDB Streams, etc.), and Lambda handles scaling, concurrency, and availability. Developers use Lambda to build **event‑driven and micro‑batch workloads**, glue code between services, and low‑traffic APIs with cost‑efficient, pay‑per‑use pricing. It enforces short‑lived execution and statelessness by design.
 
 **Typical scenario / pattern**
 A classic pattern is a serverless REST API: Amazon API Gateway routes HTTP requests to Lambda functions, which implement business logic and store data in DynamoDB or RDS. Another common use is event‑driven ETL pipelines where S3 uploads or Kinesis events trigger Lambdas that transform and route data. This style reduces operational burden and fits well for spiky or unpredictable workloads.
 
 ### AWS CodePipeline
 
-[AWS CodePipeline](https://aws.amazon.com/codepipeline/) is a fully managed continuous delivery service that orchestrates the stages of your software release process: source, build, test, and deploy. It integrates with CodeCommit, GitHub, CodeBuild, CodeDeploy, CloudFormation, and many third‑party tools. Architects use CodePipeline to encode **release workflows as code**, enforce approvals, and standardize delivery patterns across teams. Pipelines automatically react to code changes and propagate artifacts through environments (dev, test, prod) with gates and manual approvals.
+[AWS CodePipeline](https://aws.amazon.com/codepipeline/) is a fully managed continuous delivery service that orchestrates the stages of your software release process: source, build, test, and deploy. It integrates with CodeCommit, GitHub, CodeBuild, CodeDeploy, CloudFormation, and many third‑party tools. Developers use CodePipeline to encode **release workflows as code**, enforce approvals, and standardize delivery patterns across teams. Pipelines automatically react to code changes and propagate artifacts through environments (dev, test, prod) with gates and manual approvals.
 
 **Typical scenario / pattern**
 A reference pattern is a pipeline that triggers on pushes to the main branch in a Git repository, runs builds and tests via CodeBuild, runs infrastructure changes via CloudFormation, and deploys application artifacts to ECS, EKS, or Lambda. Manual approval steps between stages (e.g. test → prod) enforce change control. This pattern promotes repeatable, auditable releases across multiple environments.

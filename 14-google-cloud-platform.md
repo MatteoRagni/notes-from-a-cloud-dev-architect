@@ -2,6 +2,36 @@
 
 Google Cloud provides serverless compute, managed Kubernetes and messaging services used to build microservices.
 
+```{warning}
+
+## TODO
+
+Notes for future me...
+
+ * Fundation
+   - [ ] Google Compute Engine (GCE)
+   - [ ] Google Kubernetes Engine (GKE)
+   - [ ] Google Container Registry / Artifact Registry
+   - [ ] Google Cloud Storage
+   - [ ] Google Persistent Disk
+   - [ ] Google Cloud Filestore
+   - [ ] Google Virtual Private Cloud (VPC)
+   - [ ] Google Cloud Load Balancing
+   - [ ] Google Cloud DNS
+   - [ ] Google Cloud IAM
+   - [ ] Google Cloud Operations Suite
+ * High Level
+   - [ ] Google Cloud SQL
+   - [ ] Google Cloud Firestore
+   - [ ] Google Cloud Datastore
+   - [ ] Google Cloud Memorystore
+   - [ ] Google Cloud Pub/Sub
+   - [ ] Google BigQuery
+   - [ ] Google Vertex AI
+   - [ ] Google Cloud Functions
+   - [ ] Google Cloud Build & Cloud Deploy
+```
+
 ### Google Kubernetes Engine (GKE)
 
 GKE is a managed Kubernetes service offering control plane management, auto‑upgrades, auto‑repair, node auto-provisioning and vertical/horizontal pod autoscaling. GKE integrates with Google Cloud IAM, Stackdriver (now Cloud Logging and Monitoring), Cloud Load Balancing and Cloud Storage. Autopilot mode abstracts node management; user clusters and autopilot clusters support multi‑cluster capabilities.
@@ -30,4 +60,4 @@ Google Cloud Pub/Sub is an asynchronous, scalable messaging service that decoupl
 - **Cloud Memorystore**: Managed in‑memory data store (Redis, Memcached).
 - **Artifact Registry & Container Registry**: Container images and package storage.
 
----
+

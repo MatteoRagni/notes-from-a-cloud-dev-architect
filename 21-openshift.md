@@ -2,6 +2,35 @@
 
 Red Hat OpenShift is an enterprise Kubernetes platform built on open source. It adds opinionated components, automation and enterprise‑grade services to Kubernetes.
 
+```{warning}
+
+# TODO
+
+Notes for future me...
+
+ * Foundation
+   - [ ] OpenShift Virtualization
+   - [ ] OpenShift Container Platform
+   - [ ] Red Hat Quay (OpenShift Container Registry)
+   - [ ] OpenShift Data Foundation - Object Storage
+   - [ ] OpenShift Data Foundation - Block Storage
+   - [ ] OpenShift Data Foundation - File Storage
+   - [ ] OpenShift SDN
+   - [ ] OpenShift Router
+   - [ ] Red Hat Single Sign-On (RH-SSO)
+   - [ ] OpenShift Monitoring
+   - [ ] OpenShift Logging
+ * High Level
+   - [ ] Red Hat Data Grid (Infinispan)
+   - [ ] Red Hat AMQ & AMQ Streams
+   - [ ] Red Hat OpenShift Data Science
+   - [ ] OpenShift Serverless
+   - [ ] OpenShift Pipelines
+   - [ ] OpenShift GitOps
+```
+
+__toc__
+
 ### Core Features
 
 OpenShift provides scalability, flexibility and portability. It allows applications to scale to thousands of instances and run across hundreds of nodes, whether self‑managed or fully managed on‑premises or in the cloud. It uses OCI‑compliant container images and the CNCF‑certified Kubernetes distribution for portability. OpenShift offers developer tools (Source‑to‑Image, built‑in CI/CD), service mesh, serverless capabilities, and integrated logging and monitoring. Additional features include automated installation/upgrades, multicluster management, advanced security, persistent storage, and a broad ecosystem.
