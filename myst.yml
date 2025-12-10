@@ -8,11 +8,14 @@ project:
   authors: 
    - Matteo Ragni
   license: CC-BY-NC-4.0
+  plugins:
+    - plugins/bootstrap-badges.mjs
 site:
   template: book-theme
   options:
     logo: images/logo.png
     folders: true
+    style: plugins/main.css
   parts:
     footer: |
       &copy; 2025 by Matteo Ragni is licensed under CC BY-NC 4.0

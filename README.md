@@ -36,7 +36,7 @@ myst start
 
 ## Contributing and License
 
-```{info}
+```{note}
 Chapter marked with 🚧​ are work in progress
 ```
 

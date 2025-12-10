@@ -1,0 +1,46 @@
+:root {
+  --bs-badge-white: #ffffff;
+  --bs-badge-dark: #222529;
+  --bs-badge-primary: #007bff;
+  --bs-badge-succss: #28a745;
+  --bs-badge-danger: #dc3545;
+  --bs-badge-warning: #ffc107;
+  --bs-badge-info: #17a2b8;
+} 
+
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+}
+
+.bdg-primary {
+  color: var(--bs-badge-white);
+  background-color: var(--bs-badge-primary);
+}
+
+.bdg-success {
+  color: var(--bs-badge-white);
+  background-color: var(--bs-badge-success);
+}
+
+.bdg-danger {
+  color: var(--bs-badge-white);
+  background-color: var(--bs-badge-danger);
+}
+
+.bdg-warning {
+  color: var(--bs-badge-dark);
+  background-color: var(--bs-badge-warning);
+}
+
+.bdg-info {
+  color: var(--bs-badge-white);
+  background-color: var(--bs-badge-info);
+}
